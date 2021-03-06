@@ -1,7 +1,14 @@
-function App() {
+// Local
+import Routes from "./router"
+import {
+  GlobalStyle
+} from './styles/global'
+
+export default function App() {
   return (
-   <h1>Hello</h1>
+    <>
+      <Routes />
+      <GlobalStyle />
+    </>
   )
 }
-
-export default App
