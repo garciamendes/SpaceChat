@@ -6,7 +6,7 @@ import {
 } from './styles'
 
 import logo from './rocket.svg'
-
+import InputMask from "react-input-mask";
 
 
 function login() {
@@ -19,7 +19,7 @@ function login() {
                 </div>
                 <Form>
                     <h3>Telefone</h3>
-                    <input type='number'/>
+                    <InputMask mask='(99) 9 9999-9999' />
                     <h3>Password</h3>
                     <input type='password'/>
                     <button type='submit'>Sign In</button>
