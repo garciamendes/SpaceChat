@@ -18,11 +18,11 @@ function login() {
                     <h1>SpaceChat</h1>
                 </div>
                 <Form>
-                    <h3>Username</h3>
-                    <input />
+                    <h3>Telefone</h3>
+                    <input type='number'/>
                     <h3>Password</h3>
-                    <input />
-                    <button type='Submit'>Sign In</button>
+                    <input type='password'/>
+                    <button type='submit'>Sign In</button>
                 </Form>
             </Login>
         </Container>
