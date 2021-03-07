@@ -8,8 +8,9 @@ import {
 
 export const ContainerHome = styled.div`
   display: flex;
+  background-color: ${COLORS.Black};
 `
 
 export const Title = styled.h1`
-  color: ${COLORS.PrimaryColor};
+  color: ${COLORS.White};
 `

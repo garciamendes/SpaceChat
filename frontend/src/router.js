@@ -6,13 +6,13 @@ import {
 } from 'react-router-dom'
 
 // Local
-import Home from './containers/home'
+import sidebar from './containers/sidebar'
 
 export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact component={Home}/>
+        <Route path='/' exact component={sidebar}/>
       </Switch>
     </BrowserRouter>
   )

@@ -7,7 +7,7 @@ import {
 function home() {
   return (
     <ContainerHome>
-      <Title>Hello</Title>
+      <Title>Hello Word</Title>
     </ContainerHome>
   )
 }
