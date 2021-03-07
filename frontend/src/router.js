@@ -6,13 +6,13 @@ import {
 } from 'react-router-dom'
 
 // Local
-import chat from './containers/chat'
+import login from './containers/login'
 
 export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact component={chat}/>
+        <Route path='/' exact component={login}/>
       </Switch>
     </BrowserRouter>
   )
