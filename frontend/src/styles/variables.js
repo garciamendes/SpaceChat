@@ -4,5 +4,5 @@ export const COLORS = {
   White: '#FFFFFF',
   ThirdColor: '#C7F1FD',
   Black: '#222222',
-  MessageColor: '#9E9E9E',
+  Gray: '#918F9E'
 }
