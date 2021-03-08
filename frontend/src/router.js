@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 // Local
-import Home from './containers/home'
+import Home from './containers/Home'
 
 export default function Routes() {
   return (
