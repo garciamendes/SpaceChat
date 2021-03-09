@@ -4,7 +4,7 @@ import React from 'react'
 // Third party
 import ReactDOM from 'react-dom'
 
-// Loca
+// Local
 import App from './App'
 
 ReactDOM.render(
