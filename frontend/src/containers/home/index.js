@@ -89,7 +89,18 @@ export default function Home() {
         </div>
 
         <ContentSearch>
-          <InputSearch placeholder='Search' />
+
+          <div className='container-search-and-profile'>
+            <InputSearch placeholder='Search' />
+            <div className='profile'>
+              <img src={NoImage} />
+              <div className='username'>
+                <h4>Kaiya Rhiel Madson</h4>
+                <span>Online</span>
+              </div>
+              
+            </div>
+          </div>
 
           <ContentNotifications className='notification-content'>
             <div>

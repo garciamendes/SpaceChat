@@ -14,7 +14,7 @@ export const ContainerHome = styled.div`
 export const Header = styled.header`
   display: flex;
   width: 100%;
-  height: 110px;
+  height: 112px;
   background: ${COLORS.PrimaryColor};
 
   .logo-content {
@@ -42,6 +42,36 @@ export const ContentSearch = styled.div`
   height: 35%;
   margin-top: 1%;
   margin-left: 7%;
+
+  .container-search-and-profile {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+    margin-top: 8%;
+    width: 80%;
+
+    .profile {
+      display: flex;
+      align-items: center;
+      margin-top: 1%;
+      margin-bottom: 1%;
+
+      .username {
+        margin-left: 1%;
+        color: ${COLORS.White};
+
+        span {
+          margin-left: 3%;
+        }
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+  }
 `
 export const ContentNotifications = styled.div`
   display: flex;
@@ -74,15 +104,19 @@ export const ContentNotifications = styled.div`
 
 export const InputSearch = styled.input`
   outline: none;
-  width: 50%;
+  width: 100%;
   height: 100%;
-  padding: 0 2%;
+  padding: 3% 0;
+  padding-left: 2%;
   font-size: 16px;
   color: ${COLORS.White};
-  margin-left: 15%;
   border: none;
   border-radius: 10px;
   background: ${COLORS.SecundaryColor};
+
+  &::placeholder {
+   color: #f2f2f2; 
+  }
 `
 
 export const ContentMyContact = styled.div`
@@ -111,7 +145,7 @@ export const ImageContent = styled.img`
 export const ContainerChatMain = styled.div`
   display: flex;
   width: 100%;
-  height: calc(100% - 110px);
+  height: calc(100% - 112px);
 `
 
 export const ContainerContact = styled.div`
