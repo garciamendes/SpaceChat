@@ -189,18 +189,114 @@ export const ContainerNavigate = styled.div`
   }
 `
 
+export const ContainerScreenChat = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 60%;
+  margin-left: 6%;
+`
+
 export const ScreenChat = styled.div`
+  overflow-y: auto;
   position: relative;
   display: flex;
-  width: 50%;
+  flex-direction: column;
+  width: 100%;
   height: 100%;
-  margin-left: 10%;
+  margin-bottom: 1%;
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+`
+
+export const ContentMessages = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+
+  .all-box-messages {
+    position: relative;
+    padding: 1% 1% 1% 1%;
+    margin: 2% 3%;
+    border: none;
+    max-width: 40%;
+    color: #383838;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  }
+
+  .text-messages {
+    max-width: 90%;
+    margin-left: 1%;
+  }
+  .right { color: ${COLORS.White}; }
+
+  .hours {
+    font-size: 0.9em;
+    color: ${COLORS.White};
+    position: absolute;
+    bottom: 3px;
+    right: 10px;
+  }
+  .left { color: #c5bfbf; }
+
+  .left-messages {
+    display: flex;
+    width: auto;
+    height: auto;
+    background: #fff;
+    border-radius: 0px 10px 10px 10px;
+    background: ${COLORS.ChatLeftBackground};
+
+    &:after {
+      content: "";
+      position: absolute;
+      border-top: 15px solid ${COLORS.ChatLeftBackground};
+      border-left: 15px solid transparent;           
+      border-radius: 4px 0 0 0px;
+      width: 0;
+      height: 0;
+      top: 0;
+      left: 0;
+      transform: translateX(-14px);
+    }
+  }
+
+  .right-messages {
+    display: flex;
+    justify-content: right;
+    align-self: flex-end;
+    width: auto;
+    height: auto;
+    background: #fff;
+    border-radius: 10px 0 10px 10px;
+    background: ${COLORS.ChatRightBackground};
+
+    &:after {
+      content: "";
+      position: absolute;
+      border-top: 15px solid ${COLORS.ChatRightBackground};
+      border-left: 15px solid transparent;           
+      border-radius: 4px 0 0 0px;
+      width: 0;
+      height: 0;
+      top: 0;
+      right: -14px;
+      transform: scaleX(-1);
+    }
+  }
+`
+
+export const SendMessages = styled.div`
+  display: flex;
+  margin-bottom: 1%;
 
   .container-input {
-    position: absolute;
     display: flex;
     justify-content: space-evenly;
-    bottom: 5px;
     width: 100%;
 
     .anex-icon {
@@ -232,7 +328,7 @@ export const ScreenChat = styled.div`
         position: absolute;
         right: 5px;
         top: 7px;
-        color: ${COLORS.MessageColor};
+        color: ${COLORS.SecundaryColor};
       }
     }
 

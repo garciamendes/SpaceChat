@@ -6,7 +6,7 @@ import { BsToggleOff } from 'react-icons/bs'
 import { IoMdSettings } from 'react-icons/io'
 import { IoCallOutline, IoVideocamOutline } from 'react-icons/io5'
 import { FiUser, FiUsers, FiMessageCircle } from 'react-icons/fi'
-import {HiOutlineEmojiHappy} from 'react-icons/hi'
+import { HiOutlineEmojiHappy } from 'react-icons/hi'
 import { BsPaperclip, BsFillMicFill } from 'react-icons/bs'
 
 // Local
@@ -22,7 +22,10 @@ import {
   ContainerContact,
   ContainerNavigate,
   ContainerChatMain,
-  ScreenChat
+  ScreenChat,
+  ContainerScreenChat,
+  SendMessages,
+  ContentMessages
 } from './styles'
 import NoImage from '../../static/images/no-image.png'
 import SpaceLogo from '../../static/images/space.svg'
@@ -144,31 +147,74 @@ export default function Home() {
           </div>
 
           <ContainerNavigate>
-            <IoCallOutline size={35} className='icon-nav'/>
-            <FiMessageCircle size={35} className='icon-nav message'/>
-            <IoVideocamOutline size={35} className='icon-nav'/>
+            <IoCallOutline size={35} className='icon-nav' />
+            <FiMessageCircle size={35} className='icon-nav message' />
+            <IoVideocamOutline size={35} className='icon-nav' />
           </ContainerNavigate>
 
         </ContainerContact>
-        
-        <ScreenChat>
-          
-          <div className='container-input'>
 
-            <BsPaperclip size={35} className='anex-icon'/>
+        <ContainerScreenChat>
+          <ScreenChat>
+            
+            <ContentMessages>
 
-            <div className='icon-and-input'>
-              <input className='send-message' placeholder='Message...'/>
-              <HiOutlineEmojiHappy size={35} className='icon-emoji'/>
+              <div className='left-messages all-box-messages'>
+                <p className='text-messages'>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                </p>
+                <span className='hours left'>10:23</span>
+              </div>
+
+              <div className='right-messages all-box-messages'>
+                <p className='text-messages right'>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                  
+                </p>
+                <span className='hours'>10:23</span>
+              </div>
+
+              <div className='left-messages all-box-messages'>
+                <p className='text-messages'>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                </p>
+                <span className='hours left'>10:23</span>
+              </div>
+
+              <div className='right-messages all-box-messages'>
+                <p className='text-messages right'>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                  
+                </p>
+                <span className='hours'>10:23</span>
+              </div>
+
+
+            </ContentMessages>
+
+          </ScreenChat>
+
+          <SendMessages>
+            <div className='container-input'>
+
+              <BsPaperclip size={35} className='anex-icon' />
+
+              <div className='icon-and-input'>
+                <input className='send-message' placeholder='Message...' />
+                <HiOutlineEmojiHappy size={35} className='icon-emoji' />
+              </div>
+
+              <span className='content-mic'>
+                <BsFillMicFill size={25} className='mic-icon' />
+              </span>
+
             </div>
-
-            <span className='content-mic'>
-              <BsFillMicFill size={25} className='mic-icon'/>
-            </span>
-
-          </div>
-
-        </ScreenChat>
+          </SendMessages>
+        </ContainerScreenChat>
 
       </ContainerChatMain>
 
