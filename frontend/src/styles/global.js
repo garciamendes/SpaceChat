@@ -1,4 +1,8 @@
+// Third party
 import { createGlobalStyle } from 'styled-components'
+
+// Local
+import { COLORS } from './variables'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -11,5 +15,12 @@ export const GlobalStyle = createGlobalStyle`
 
   html, body, #root {
     height: 100%;
+
+    .span-no-contacts {
+      margin-left: calc(100% - 75%);
+      margin-top: 10%;
+      font-size: 20px;
+      color: ${COLORS.Gray};
+    }
   }
 `

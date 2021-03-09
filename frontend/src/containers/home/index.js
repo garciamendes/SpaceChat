@@ -8,6 +8,7 @@ import { IoCallOutline, IoVideocamOutline } from 'react-icons/io5'
 import { FiUser, FiUsers, FiMessageCircle } from 'react-icons/fi'
 import { HiOutlineEmojiHappy } from 'react-icons/hi'
 import { BsPaperclip, BsFillMicFill } from 'react-icons/bs'
+import Lottie from 'react-lottie'
 
 // Local
 import {
@@ -31,6 +32,7 @@ import NoImage from '../../static/images/no-image.png'
 import SpaceLogo from '../../static/images/space.svg'
 import Contacts from '../../components/Contacts'
 import Groups from '../../components/Groups'
+import ContentEmpty from '../../static/lottie/empty.json'
 
 export default function Home() {
 
@@ -60,10 +62,10 @@ export default function Home() {
   ]
 
   const groups = [
-    { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 20 },
-    { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 7 },
-    { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 18 },
-    { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 10 },
+    // { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 20 },
+    // { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 7 },
+    // { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 18 },
+    // { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 10 },
   ]
 
   function handleNotification() {
@@ -75,6 +77,15 @@ export default function Home() {
   function handledClickTab(name) {
     if (selectTab !== name) {
       setSelectTab(name)
+    }
+  }
+
+  const AnimationContentEmpty = {
+    loop: true,
+    autoplay: true,
+    animationData: ContentEmpty,
+    renderSettings: {
+      preserveAspectRatio: 'xMidYmid slice'
     }
   }
 
@@ -152,25 +163,49 @@ export default function Home() {
             <div>
               {
                 selectTab === 'chat' ?
-                  contacts.map((contact, index) => (
-                    <Contacts
-                      key={index}
-                      image={contact.image}
-                      name={contact.name}
-                      recent={contact.recent}
-                      hours={contact.hours}
-                      amountPost={contact.numberMessages}
-                    />
-                  ))
-                  :
-                  groups.map((group, index) => (
-                    <Groups
-                      key={index}
-                      image={group.image}
-                      name={group.name}
-                      amountPost={group.numberMessages}
-                    />
-                  ))
+                (
+                  contacts.length === 0 ? (
+                    <>
+                      <Lottie 
+                        options={AnimationContentEmpty}
+                        height={200}
+                        width={200}
+                      />
+                      <span className='span-no-contacts'>No contacts found</span>
+                    </>
+                  ) : (
+                    contacts.map((contact, index) => (
+                      <Contacts
+                        key={index}
+                        image={contact.image}
+                        name={contact.name}
+                        recent={contact.recent}
+                        hours={contact.hours}
+                        amountPost={contact.numberMessages}
+                      />
+                    ))
+                  )
+                ) : (
+                  groups.length === 0 ? (
+                    <>
+                      <Lottie 
+                        options={AnimationContentEmpty}
+                        height={200}
+                        width={200}
+                      />
+                      <span className='span-no-contacts'>No groups found</span>
+                    </>
+                  ) : (
+                    groups.map((group, index) => (
+                      <Groups
+                        key={index}
+                        image={group.image}
+                        name={group.name}
+                        amountPost={group.numberMessages}
+                      />
+                    ))
+                  )
+                )
               }
             </div>
           </div>
