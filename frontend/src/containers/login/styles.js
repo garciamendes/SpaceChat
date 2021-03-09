@@ -17,8 +17,8 @@ export const Container = styled.div`
 export const Login = styled.div`
   text-align: center;
   align-self: center;
-  width: 45%;
-  height: 60%;
+  width: 55%;
+  height: 70%;
   border-radius: 24px;
   background-color: ${COLORS.White};
   box-shadow: 0 0 20px rgba(0, 0, 0, .3);
@@ -68,7 +68,7 @@ export const Form = styled.div`
   button {
     background-color: ${COLORS.PrimaryColor};
     padding: 2%;
-    margin-top: 3%;
+    margin-top: 4%;
     outline: none;
     border: none;
     border-radius: 10px;

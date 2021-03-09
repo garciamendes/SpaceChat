@@ -53,8 +53,8 @@ export const ContentSearch = styled.div`
     .profile {
       display: flex;
       align-items: center;
-      margin-top: 1%;
-      margin-bottom: 1%;
+      margin-top: 15px;
+      margin-bottom: 12px;
 
       .username {
         margin-left: 1%;
@@ -62,6 +62,7 @@ export const ContentSearch = styled.div`
 
         span {
           margin-left: 3%;
+          font-size: 12px;
         }
       }
 
