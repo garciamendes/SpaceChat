@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 // Third party
-import { BsToggleOff } from 'react-icons/bs'
+import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
 import { IoMdSettings } from 'react-icons/io'
 import { IoCallOutline, IoVideocamOutline } from 'react-icons/io5'
 import { FiUser, FiUsers, FiMessageCircle } from 'react-icons/fi'
@@ -34,6 +34,8 @@ import Groups from '../../components/Groups'
 
 export default function Home() {
 
+  const [notification, setNotification] = useState(false)
+
   // Json contacts
   const contacts = [
     { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 1 },
@@ -64,6 +66,10 @@ export default function Home() {
     { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 10 },
   ]
 
+  function handleNotification() {
+    setNotification(notification ? false : true)
+  }
+
   const [selectTab, setSelectTab] = useState('chat')
 
   function handledClickTab(name) {
@@ -87,7 +93,19 @@ export default function Home() {
 
           <ContentNotifications className='notification-content'>
             <div>
-              <BsToggleOff className='toggle-notification' />
+              {notification ? (
+                <BsToggleOn
+                  className='toggle-notification'
+                  onClick={handleNotification}
+                />
+              ) : (
+                <BsToggleOff
+                  className='toggle-notification'
+                  onClick={handleNotification}
+                />
+              )
+
+              }
               <span>Notifications</span>
             </div>
             <IoMdSettings className='settings' size={40} />
