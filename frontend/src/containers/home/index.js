@@ -34,7 +34,7 @@ import Contacts from '../../components/Contacts'
 import Groups from '../../components/Groups'
 import ContentEmpty from '../../static/lottie/empty.json'
 
-export default function Home() {
+export default function HomeChat() {
 
   const [notification, setNotification] = useState(false)
 

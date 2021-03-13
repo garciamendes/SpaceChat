@@ -17,7 +17,7 @@ export const Container = styled.div`
 export const Login = styled.div`
   text-align: center;
   align-self: center;
-  width: 55%;
+  width: 35%;
   height: 70%;
   border-radius: 24px;
   background-color: ${COLORS.White};
@@ -41,6 +41,7 @@ export const Form = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 5%;
   padding-top: 3%;
 
   h3 { 
