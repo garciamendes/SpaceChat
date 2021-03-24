@@ -88,14 +88,14 @@ export const Form = styled.div`
 
     input {
       width: 100%;
-      padding: 4% 0;
+      height: 30px;
     }
 
     .eye-icon {
       cursor: pointer;
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: calc(30px - 20px);
+      right: 10px;
       color: ${COLORS.PrimaryColor};
     }
   }
