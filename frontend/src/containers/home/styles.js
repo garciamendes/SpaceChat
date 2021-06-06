@@ -1,16 +1,14 @@
 // Third party
-import styled from 'styled-components'
+import styled from "styled-components";
 
 // Local
-import {
-  COLORS
-} from '../../styles/variables'
+import { COLORS } from "../../styles/variables";
 
 export const ContainerHome = styled.div`
   display: flex;
   height: 100%;
   flex-direction: column;
-`
+`;
 export const Header = styled.header`
   display: flex;
   width: 100%;
@@ -26,14 +24,14 @@ export const Header = styled.header`
       align-items: center;
     }
   }
-`
+`;
 
 export const Logo = styled.span`
   color: ${COLORS.White};
   font-size: 20px;
   font-weight: 700;
   margin-left: 5%;
-`
+`;
 
 export const ContentSearch = styled.div`
   display: flex;
@@ -73,7 +71,7 @@ export const ContentSearch = styled.div`
       }
     }
   }
-`
+`;
 export const ContentNotifications = styled.div`
   display: flex;
   align-items: center;
@@ -91,7 +89,7 @@ export const ContentNotifications = styled.div`
   .settings {
     cursor: pointer;
     margin-left: 10%;
-    color: ${COLORS.White};
+    color: ${COLORS.Notifications};
   }
 
   .toggle-notification {
@@ -99,9 +97,9 @@ export const ContentNotifications = styled.div`
     font-size: 35px;
     margin-right: 3%;
     margin-left: 3%;
-    color: ${COLORS.White};
+    color: ${COLORS.Notifications};
   }
-`
+`;
 
 export const InputSearch = styled.input`
   outline: none;
@@ -116,9 +114,9 @@ export const InputSearch = styled.input`
   background: ${COLORS.SecundaryColor};
 
   &::placeholder {
-   color: #f2f2f2; 
+    color: #f2f2f2;
   }
-`
+`;
 
 export const ContentMyContact = styled.div`
   display: flex;
@@ -133,21 +131,21 @@ export const ContentMyContact = styled.div`
     font-weight: 600;
     color: ${COLORS.White};
   }
-`
+`;
 
 export const ImageContent = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
   margin-left: 5%;
-`
+`;
 
 // Chat
 export const ContainerChatMain = styled.div`
   display: flex;
   width: 100%;
   height: calc(100% - 112px);
-`
+`;
 
 export const ContainerContact = styled.div`
   display: flex;
@@ -179,18 +177,18 @@ export const ContainerContact = styled.div`
     .btn-select {
       cursor: pointer;
       outline: none;
-      opacity: .5;
+      opacity: 0.5;
 
       display: flex;
       justify-content: center;
-      align-items:  center;
-      
+      align-items: center;
+
       width: 35%;
       padding: 4%;
 
       background-color: ${COLORS.SecundaryColor};
       color: ${COLORS.White};
-      
+
       border-radius: 25px;
       font-size: 15px;
       border: none;
@@ -202,10 +200,9 @@ export const ContainerContact = styled.div`
       &.active {
         opacity: 1;
       }
-    
     }
   }
-`
+`;
 export const ContainerNavigate = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -220,9 +217,9 @@ export const ContainerNavigate = styled.div`
   }
 
   .message {
-    color: ${COLORS.SecundaryColor}
+    color: ${COLORS.SecundaryColor};
   }
-`
+`;
 
 export const ContainerScreenChat = styled.div`
   display: flex;
@@ -231,7 +228,7 @@ export const ContainerScreenChat = styled.div`
   height: 100%;
   width: 60%;
   margin-left: 6%;
-`
+`;
 
 export const ScreenChat = styled.div`
   overflow-y: auto;
@@ -245,7 +242,7 @@ export const ScreenChat = styled.div`
   ::-webkit-scrollbar {
     width: 0;
   }
-`
+`;
 
 export const ContentMessages = styled.div`
   display: flex;
@@ -260,14 +257,16 @@ export const ContentMessages = styled.div`
     border: none;
     max-width: 40%;
     color: #383838;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 
   .text-messages {
     max-width: 90%;
     margin-left: 1%;
   }
-  .right { color: ${COLORS.White}; }
+  .right {
+    color: ${COLORS.White};
+  }
 
   .hours {
     font-size: 0.9em;
@@ -276,7 +275,9 @@ export const ContentMessages = styled.div`
     bottom: 3px;
     right: 10px;
   }
-  .left { color: #c5bfbf; }
+  .left {
+    color: #c5bfbf;
+  }
 
   .left-messages {
     display: flex;
@@ -290,7 +291,7 @@ export const ContentMessages = styled.div`
       content: "";
       position: absolute;
       border-top: 15px solid ${COLORS.ChatLeftBackground};
-      border-left: 15px solid transparent;           
+      border-left: 15px solid transparent;
       border-radius: 4px 0 0 0px;
       width: 0;
       height: 0;
@@ -314,7 +315,7 @@ export const ContentMessages = styled.div`
       content: "";
       position: absolute;
       border-top: 15px solid ${COLORS.ChatRightBackground};
-      border-left: 15px solid transparent;           
+      border-left: 15px solid transparent;
       border-radius: 4px 0 0 0px;
       width: 0;
       height: 0;
@@ -323,7 +324,7 @@ export const ContentMessages = styled.div`
       transform: scaleX(-1);
     }
   }
-`
+`;
 
 export const SendMessages = styled.div`
   display: flex;
@@ -344,7 +345,6 @@ export const SendMessages = styled.div`
       display: flex;
       position: relative;
       width: 70%;
-      
 
       .send-message {
         overflow: hidden;
@@ -355,7 +355,7 @@ export const SendMessages = styled.div`
         border-radius: 10px;
         border: none;
         font-size: 17px;
-        background: #F2F2F2;
+        background: #f2f2f2;
       }
 
       .icon-emoji {
@@ -378,6 +378,5 @@ export const SendMessages = styled.div`
       background: ${COLORS.PrimaryColor};
       color: ${COLORS.White};
     }
-
   }
-`
+`;
