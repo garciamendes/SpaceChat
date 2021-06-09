@@ -1,8 +1,8 @@
 // Third party
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 // Local
-import { COLORS } from './variables'
+import { COLORS } from "./variables";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -23,4 +23,4 @@ export const GlobalStyle = createGlobalStyle`
       color: ${COLORS.Gray};
     }
   }
-`
+`;
