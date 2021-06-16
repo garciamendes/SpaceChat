@@ -8,4 +8,5 @@ export const COLORS = {
   ChatLeftBackground: "#F2F2F2",
   ChatRightBackground: "#4AD5FF",
   Notifications: "#18BCEE",
+  qqqqqq: "#18BCEE",
 };
