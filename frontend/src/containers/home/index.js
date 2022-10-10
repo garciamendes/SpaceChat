@@ -8,6 +8,7 @@ import { IoCallOutline, IoVideocamOutline } from 'react-icons/io5'
 import { FiUser, FiUsers, FiMessageCircle } from 'react-icons/fi'
 import { HiOutlineEmojiHappy } from 'react-icons/hi'
 import { BsPaperclip, BsFillMicFill } from 'react-icons/bs'
+import { IoMdSend } from 'react-icons/io'
 import Lottie from 'react-lottie'
 
 // Local
@@ -42,23 +43,6 @@ export default function HomeChat() {
   const contacts = [
     { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 1 },
     { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 5 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 10 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 0 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 2 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 9 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 0 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 5 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 0 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 0 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 0 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 50 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 0 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 0 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 0 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 5 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 5 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 0 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 0 },
   ]
 
   const groups = [
@@ -109,7 +93,7 @@ export default function HomeChat() {
                 <h4>Kaiya Rhiel Madson</h4>
                 <span>Online</span>
               </div>
-              
+
             </div>
           </div>
 
@@ -166,7 +150,7 @@ export default function HomeChat() {
                 (
                   contacts.length === 0 ? (
                     <>
-                      <Lottie 
+                      <Lottie
                         options={AnimationContentEmpty}
                         height={200}
                         width={200}
@@ -188,7 +172,7 @@ export default function HomeChat() {
                 ) : (
                   groups.length === 0 ? (
                     <>
-                      <Lottie 
+                      <Lottie
                         options={AnimationContentEmpty}
                         height={200}
                         width={200}
@@ -220,7 +204,7 @@ export default function HomeChat() {
 
         <ContainerScreenChat>
           <ScreenChat>
-            
+
             <ContentMessages>
 
               <div className='left-messages all-box-messages'>
@@ -235,7 +219,7 @@ export default function HomeChat() {
                 <p className='text-messages right'>
                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-                  
+
                 </p>
                 <span className='hours'>10:23</span>
               </div>
@@ -252,7 +236,7 @@ export default function HomeChat() {
                 <p className='text-messages right'>
                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-                  
+
                 </p>
                 <span className='hours'>10:23</span>
               </div>
@@ -273,7 +257,7 @@ export default function HomeChat() {
               </div>
 
               <span className='content-mic'>
-                <BsFillMicFill size={25} className='mic-icon' />
+                <IoMdSend size={25} className='mic-icon' />
               </span>
 
             </div>

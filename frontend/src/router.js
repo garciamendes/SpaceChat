@@ -6,15 +6,15 @@ import {
 } from 'react-router-dom'
 
 // Local
-import Login from './containers/Login'
-import Home from './containers/Home'
+import Login from './containers/login'
+import Home from './containers/home'
 
 export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact component={Login}/>
-        <Route path='/home-chat' component={Home}/>
+        {/* <Route path='/' exact component={Login}/> */}
+        <Route path='/' component={Home}/>
       </Switch>
     </BrowserRouter>
   )
