@@ -11,7 +11,7 @@ export const Container = styled.div`
   justify-content: center;
   align-content: center;
   height: 100%;
-  background-image: linear-gradient(to left, #4AD5FF , #1E98BE ); 
+  background-image: linear-gradient(to left, #4AD5FF , #1E98BE );
 `
 
 export const Login = styled.div`
@@ -22,7 +22,7 @@ export const Login = styled.div`
   border-radius: 24px;
   background-color: ${COLORS.White};
   box-shadow: 0 0 20px rgba(0, 0, 0, .3);
-    
+
 
   .logo {
     display: flex;
@@ -44,9 +44,9 @@ export const Form = styled.div`
   margin-top: 5%;
   padding-top: 3%;
 
-  h3 { 
+  h3 {
     align-self: flex-start;
-    padding-left: 10%;
+    padding-left: 2.5rem;
     padding-bottom: 2%;
     font-size: 16px;
     color: #4AD5FF;
@@ -55,9 +55,8 @@ export const Form = styled.div`
   .input {
     margin-bottom: 3%;
     align-self: center;
-    text-align: center;
     font-size: 20px;
-    padding: 3% 0;
+    padding: 3% 2%;
     width: 80%;
     border-radius: 10px;
     border: none;
@@ -67,36 +66,16 @@ export const Form = styled.div`
   }
 
   button {
-    background-color: ${COLORS.PrimaryColor};
-    padding: 2%;
-    margin-top: 4%;
     outline: none;
     border: none;
     border-radius: 10px;
-    width: 80%;
+    width: 83%;
     align-self: center;
-    color: ${COLORS.White};
+    padding: 2% 3rem;
     font-size: 24px;
+    margin-top: 4%;
     cursor: pointer;
-  }
-
-  .password-content {
-    position: relative;
-    display: flex;
-    align-self: center;
-    width: 80%;
-
-    input {
-      width: 100%;
-      height: 30px;
-    }
-
-    .eye-icon {
-      cursor: pointer;
-      position: absolute;
-      top: calc(30px - 20px);
-      right: 10px;
-      color: ${COLORS.PrimaryColor};
-    }
+    color: ${COLORS.White};
+    background-color: ${COLORS.PrimaryColor};
   }
 `

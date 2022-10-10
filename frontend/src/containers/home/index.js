@@ -1,5 +1,5 @@
 // React
-import { useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 // Third party
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
@@ -35,33 +35,65 @@ import Contacts from '../../components/Contacts'
 import Groups from '../../components/Groups'
 import ContentEmpty from '../../static/lottie/empty.json'
 
-export default function HomeChat() {
-
+export default function HomeChat({ socket }) {
+  // State
+  const [message, setMessage] = useState('')
+  const [typingStatus, setTypingStatus] = useState('')
+  const [messages, setMessages] = useState([])
+  const [users, setUsers] = useState([])
+  const [groups, setGroups] = useState([])
+  const [selectTab, setSelectTab] = useState('chat')
   const [notification, setNotification] = useState(false)
 
-  // Json contacts
-  const contacts = [
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 1 },
-    { name: 'Kaiya Rhiel Madsen', recent: 'Olá', image: NoImage, hours: '11:40', numberMessages: 5 },
-  ]
+  // Hooks
+  const lastMessageRef = useRef(null)
 
-  const groups = [
-    // { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 20 },
-    // { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 7 },
-    // { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 18 },
-    // { name: 'Kaiya Rhiel Madsen', image: NoImage, numberMessages: 10 },
-  ]
+  useEffect(() => {
+    socket.on('messageResponse', (data) => setMessages([...messages, data]))
+  }, [socket, messages])
+
+  useEffect(() => {
+    socket.on('newUserResponse', (data) => setUsers([...users, data]));
+  }, [socket, users])
+
+  useEffect(() => {
+    socket.on('typingResponse', (data) => setTypingStatus(data));
+  }, [socket])
+
+  useEffect(() => {
+    lastMessageRef.curret?.scrollInteView({ behavior: 'smooth' })
+  }, [messages])
 
   function handleNotification() {
     setNotification(notification ? false : true)
   }
 
-  const [selectTab, setSelectTab] = useState('chat')
-
   function handledClickTab(name) {
     if (selectTab !== name) {
       setSelectTab(name)
     }
+  }
+
+  const handleTyping = () =>
+    socket.emit('typing', 'Digitando...')
+
+  const handleSendMessage = (e) => {
+    e.preventDefault()
+    const name = localStorage.getItem('name')
+    let hours = new Date().getHours()
+    let minutes = new Date().getMinutes()
+
+    if (message.trim() && name) {
+      socket.emit('message', {
+        text: message,
+        name,
+        time: `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`,
+        id: `${socket.id}${Math.random()}`,
+        socketID: socket.id
+      })
+    }
+
+    setMessage('')
   }
 
   const AnimationContentEmpty = {
@@ -73,6 +105,8 @@ export default function HomeChat() {
     }
   }
 
+
+  console.log(users);
   return (
     <ContainerHome>
       <Header>
@@ -132,133 +166,115 @@ export default function HomeChat() {
               className={`btn-select ${selectTab === 'chat' && 'active'}`}
               onClick={() => handledClickTab('chat')}>
               <FiUser size={20} className='icon-btn' />
-            Contact
-          </button>
+              Contact
+            </button>
 
             <button
               className={`btn-select ${selectTab === 'group' && 'active'}`}
               onClick={() => handledClickTab('group')}>
               <FiUsers size={20} className='icon-btn' />
-            Group
-          </button>
+              Group
+            </button>
           </header>
 
           <div className='content-list-contact'>
             <div>
               {
                 selectTab === 'chat' ?
-                (
-                  contacts.length === 0 ? (
-                    <>
-                      <Lottie
-                        options={AnimationContentEmpty}
-                        height={200}
-                        width={200}
-                      />
-                      <span className='span-no-contacts'>No contacts found</span>
-                    </>
+                  (
+                    users.length === 0 ? (
+                      <>
+                        <Lottie
+                          options={AnimationContentEmpty}
+                          height={200}
+                          width={200}
+                        />
+                        <span className='span-no-contacts'>No contacts found</span>
+                      </>
+                    ) : (
+                      users.map((contact) => (
+                        <Contacts
+                          key={contact.socketID}
+                          image={NoImage}
+                          name={contact?.name}
+                          recent={
+                            typingStatus ? typingStatus :
+                              messages[messages.length - 1]?.name === localStorage.getItem('name') &&
+                              messages[messages.length - 1]?.text
+                          }
+                        />
+                      ))
+                    )
                   ) : (
-                    contacts.map((contact, index) => (
-                      <Contacts
-                        key={index}
-                        image={contact.image}
-                        name={contact.name}
-                        recent={contact.recent}
-                        hours={contact.hours}
-                        amountPost={contact.numberMessages}
-                      />
-                    ))
+                    groups.length === 0 ? (
+                      <>
+                        <Lottie
+                          options={AnimationContentEmpty}
+                          height={200}
+                          width={200}
+                        />
+                        <span className='span-no-contacts'>No groups found</span>
+                      </>
+                    ) : (
+                      groups.map((group, index) => (
+                        <Groups
+                          key={index}
+                          image={group.image}
+                          name={group.name}
+                          amountPost={group.numberMessages}
+                        />
+                      ))
+                    )
                   )
-                ) : (
-                  groups.length === 0 ? (
-                    <>
-                      <Lottie
-                        options={AnimationContentEmpty}
-                        height={200}
-                        width={200}
-                      />
-                      <span className='span-no-contacts'>No groups found</span>
-                    </>
-                  ) : (
-                    groups.map((group, index) => (
-                      <Groups
-                        key={index}
-                        image={group.image}
-                        name={group.name}
-                        amountPost={group.numberMessages}
-                      />
-                    ))
-                  )
-                )
               }
             </div>
           </div>
 
           <ContainerNavigate>
-            <IoCallOutline size={35} className='icon-nav' />
             <FiMessageCircle size={35} className='icon-nav message' />
-            <IoVideocamOutline size={35} className='icon-nav' />
           </ContainerNavigate>
 
         </ContainerContact>
 
         <ContainerScreenChat>
-          <ScreenChat>
-
+          <ScreenChat ref={lastMessageRef}>
             <ContentMessages>
-
-              <div className='left-messages all-box-messages'>
-                <p className='text-messages'>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-                </p>
-                <span className='hours left'>10:23</span>
-              </div>
-
-              <div className='right-messages all-box-messages'>
-                <p className='text-messages right'>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-
-                </p>
-                <span className='hours'>10:23</span>
-              </div>
-
-              <div className='left-messages all-box-messages'>
-                <p className='text-messages'>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-                </p>
-                <span className='hours left'>10:23</span>
-              </div>
-
-              <div className='right-messages all-box-messages'>
-                <p className='text-messages right'>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-
-                </p>
-                <span className='hours'>10:23</span>
-              </div>
-
-
+              {messages.map((message) =>
+                message.name === localStorage.getItem('name') ? (
+                  <div className='right-messages all-box-messages'>
+                    <p className='text-messages right'>{message.text}</p>
+                    <span className='hours right'>{message.time}</span>
+                  </div>
+                ) : (
+                  <div className='left-messages all-box-messages'>
+                    <p className='text-messages'>{message.text}</p>
+                    <span className='hours left'>{message.time}</span>
+                  </div>
+                )
+              )}
             </ContentMessages>
-
           </ScreenChat>
 
           <SendMessages>
             <div className='container-input'>
 
-              <BsPaperclip size={35} className='anex-icon' />
-
-              <div className='icon-and-input'>
-                <input className='send-message' placeholder='Message...' />
-                <HiOutlineEmojiHappy size={35} className='icon-emoji' />
+              <div className='content_icons'>
+                <BsPaperclip size={25} className='anex-icon' />
+                <HiOutlineEmojiHappy size={25} className='icon-emoji' />
               </div>
 
-              <span className='content-mic'>
+              <div className='icon-and-input'>
+                <input
+                  value={message}
+                  onChange={e => setMessage(e.target.value)}
+                  className='send-message'
+                  onKeyDown={handleTyping}
+                  placeholder='Message...' />
+              </div>
+
+              <button className='content-send' onClick={handleSendMessage}>
                 <IoMdSend size={25} className='mic-icon' />
-              </span>
+              </button>
 
             </div>
           </SendMessages>

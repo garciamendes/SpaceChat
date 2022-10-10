@@ -9,12 +9,12 @@ import {
 import Login from './containers/login'
 import Home from './containers/home'
 
-export default function Routes() {
+export default function Routes({ socket }) {
   return (
     <BrowserRouter>
       <Switch>
-        {/* <Route path='/' exact component={Login}/> */}
-        <Route path='/' component={Home}/>
+        <Route path='/' exact render={() => <Login socket={socket} />} />
+        <Route path='/home' render={() => <Home socket={socket} />} />
       </Switch>
     </BrowserRouter>
   )

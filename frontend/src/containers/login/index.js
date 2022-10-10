@@ -1,9 +1,6 @@
 // React
 import { useState } from 'react'
-
-// Third party
-import InputMask from "react-input-mask"
-import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5'
+import { useHistory } from 'react-router-dom'
 
 // Local
 import {
@@ -13,28 +10,21 @@ import {
 } from './styles'
 import logo from '../../static/images/space.svg'
 
-export default function LoginChat({ history }) {
+export default function LoginChat({ socket }) {
+  // State
+  const [name, setName] = useState('')
 
-  const [eyePassword, setEyePassword] = useState(false)
-
-  const [number, setNumber] = useState('')
-  const [password, setPassword] = useState('')
+  // Hooks
+  const history = useHistory()
 
   function handleGoHome(event) {
     event.preventDefault()
 
-    if (number !== '' && password !== '') {
-      history.push('home-chat')
-    } else {
-      alert('Please fill in all fields')
-    }
-
-
+    localStorage.setItem('name', name)
+    socket.emit('newUser', { name, socketID: socket.id })
+    history.push('/home')
   }
 
-  function showPassword() {
-    setEyePassword(eyePassword ? false : true)
-  }
 
   return (
     <Container>
@@ -44,29 +34,12 @@ export default function LoginChat({ history }) {
           <h2>SpaceChat</h2>
         </div>
         <Form>
-          <h3>Telefone</h3>
-          <InputMask
-            mask='(99) 9 9999-9999'
+          <h3>Nome do usuário</h3>
+          <input
             className='input'
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
-          />
-          <h3>Password</h3>
-          <div className='password-content'>
-            <input
-              className='input'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type={eyePassword ? 'text' : 'password'}
-            />
-            {eyePassword ? (
-              <IoEyeOffOutline size={35} onClick={showPassword} className='eye-icon' />
-            ) : (
-              <IoEyeOutline size={35} onClick={showPassword} className='eye-icon' />
-            )
-            }
+            value={name}
+            onChange={(e) => setName(e.target.value)} />
 
-          </div>
           <button onClick={handleGoHome} type='submit'>Sign In</button>
         </Form>
       </Login>

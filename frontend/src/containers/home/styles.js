@@ -251,30 +251,30 @@ export const ContentMessages = styled.div`
   height: auto;
 
   .all-box-messages {
-    position: relative;
-    padding: 1% 1% 1% 1%;
-    margin: 2% 3%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 1%;
+    margin: 1% 3%;
     border: none;
     max-width: 40%;
     color: #383838;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 
-  .text-messages {
-    max-width: 90%;
-    margin-left: 1%;
-  }
   .right {
     color: ${COLORS.White};
   }
 
   .hours {
+    display: flex;
     font-size: 0.9em;
-    color: ${COLORS.White};
-    position: absolute;
-    bottom: 3px;
-    right: 10px;
+    height: 100%;
+    color: #FFFFFF;
+    flex-direction: column;
+    justify-content: flex-end;
   }
+
   .left {
     color: #c5bfbf;
   }
@@ -286,19 +286,6 @@ export const ContentMessages = styled.div`
     background: #fff;
     border-radius: 0px 10px 10px 10px;
     background: ${COLORS.ChatLeftBackground};
-
-    &:after {
-      content: "";
-      position: absolute;
-      border-top: 15px solid ${COLORS.ChatLeftBackground};
-      border-left: 15px solid transparent;
-      border-radius: 4px 0 0 0px;
-      width: 0;
-      height: 0;
-      top: 0;
-      left: 0;
-      transform: translateX(-14px);
-    }
   }
 
   .right-messages {
@@ -310,40 +297,39 @@ export const ContentMessages = styled.div`
     background: #fff;
     border-radius: 10px 0 10px 10px;
     background: ${COLORS.ChatRightBackground};
-
-    &:after {
-      content: "";
-      position: absolute;
-      border-top: 15px solid ${COLORS.ChatRightBackground};
-      border-left: 15px solid transparent;
-      border-radius: 4px 0 0 0px;
-      width: 0;
-      height: 0;
-      top: 0;
-      right: -14px;
-      transform: scaleX(-1);
-    }
   }
 `;
 
 export const SendMessages = styled.div`
   display: flex;
+  align-items: center;
   margin-bottom: 1%;
 
   .container-input {
     display: flex;
+    align-items: center;
     justify-content: space-evenly;
     width: 100%;
 
-    .anex-icon {
-      cursor: pointer;
-      margin-top: 1%;
-      color: ${COLORS.MessageColor};
+    .content_icons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .anex-icon {
+        cursor: pointer;
+        color: ${COLORS.MessageColor};
+      }
+
+      .icon-emoji {
+        cursor: pointer;
+        color: ${COLORS.MessageColor};
+      }
     }
+
 
     .icon-and-input {
       display: flex;
-      position: relative;
       width: 70%;
 
       .send-message {
@@ -351,29 +337,22 @@ export const SendMessages = styled.div`
         resize: none;
         outline: none;
         width: 100%;
-        padding: 1% 2%;
+        padding: 2% 2%;
         border-radius: 10px;
         border: none;
         font-size: 17px;
         background: #f2f2f2;
       }
-
-      .icon-emoji {
-        cursor: pointer;
-        position: absolute;
-        right: 5px;
-        top: 7px;
-        color: ${COLORS.SecundaryColor};
-      }
     }
 
-    .content-mic {
+    .content-send {
       cursor: pointer;
+      border: none;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border-radius: 50px;
       background: ${COLORS.PrimaryColor};
       color: ${COLORS.White};

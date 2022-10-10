@@ -18,7 +18,7 @@ export default function Contacts({ image, name, recent, hours, amountPost }) {
         <Username>{name}</Username>
         <RecentPost>{recent}</RecentPost>
       </ContentUser>
-      <ContentChat>
+      {/* <ContentChat>
         <Hours>{hours}</Hours>
         {
           amountPost <= 0 ? (<></>) : (
@@ -29,7 +29,7 @@ export default function Contacts({ image, name, recent, hours, amountPost }) {
             </>
           )
         }
-      </ContentChat>
+      </ContentChat> */}
     </ContainerChat >
   )
 }
